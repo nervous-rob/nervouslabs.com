@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nervous Labs — Coming Soon</title>
+  <meta name="description" content="Nervous Labs is building AI-powered tools and research for better knowledge, creativity, and systems. Launching soon." />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Nervous Labs — Coming Soon" />
+  <meta property="og:description" content="AI-powered tools & research for better knowledge, creativity, and systems. Launching soon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nervouslabs.com/" />
+  <meta property="og:image" content="https://nervouslabs.com/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index,follow" />
+
+  <!-- Favicon (replace these paths when you have real assets) -->
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Minimal, responsive, accessible styles (no external deps) -->
+  <style>
+    :root {
+      --bg: #0b0c10;         /* near-black */
+      --fg: #e6e7ea;         /* soft white */
+      --muted: #a7adba;      /* slate */
+      --brand: #66fcf1;      /* teal */
+      --accent: #45a29e;     /* deep teal */
+      --card: #121318;       /* dark card */
+      --ring: rgba(102,252,241,0.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--fg);
+      background: radial-gradient(1200px 1200px at 10% 10%, rgba(102,252,241,0.08), transparent 40%),
+                  radial-gradient(1000px 1000px at 90% 90%, rgba(69,162,158,0.07), transparent 40%),
+                  var(--bg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .wrap {
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 6vh 16px;
+    }
+    header {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 22px; max-width: 1100px; margin: 0 auto;
+    }
+    .logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; color: var(--fg); }
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: conic-gradient(from 180deg, var(--brand), var(--accent), var(--brand));
+      box-shadow: 0 0 0 4px rgba(102,252,241,0.08), 0 10px 30px rgba(0,0,0,0.35);
+    }
+    .logo-text { font-weight: 700; letter-spacing: 0.4px; }
+
+    main { width: 100%; max-width: 760px; margin: 0 auto; text-align: center; }
+    h1 { font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.4rem); margin: 0 0 14px; line-height: 1.1; }
+    .tag { font-size: clamp(1rem, 0.9rem + 0.4vw, 1.2rem); color: var(--muted); margin-bottom: 28px; }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 22px; margin: 16px auto; max-width: 760px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25), inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 700px) { .grid { grid-template-columns: 1.2fr 0.8fr; text-align: left; } }
+
+    .pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 10px 14px; border-radius: 999px;
+      background: rgba(102,252,241,0.08);
+      color: var(--brand); border: 1px solid rgba(102,252,241,0.25);
+      font-weight: 600; letter-spacing: 0.3px;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 18px; }
+    .btn {
+      --h: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      height: var(--h); padding: 0 16px; border-radius: 12px; cursor: pointer; text-decoration: none;
+      color: var(--bg); background: var(--brand); border: 1px solid rgba(255,255,255,0.08);
+      font-weight: 700; letter-spacing: 0.2px; box-shadow: 0 8px 20px rgba(102,252,241,0.25);
+    }
+    .btn.ghost { background: transparent; color: var(--fg); border-color: rgba(255,255,255,0.16); }
+    .btn:focus { outline: 4px solid var(--ring); outline-offset: 2px; }
+
+    .links { display: flex; gap: 14px; justify-content: center; margin-top: 6px; }
+    .links a { color: var(--muted); text-decoration: none; }
+    .links a:hover { color: var(--fg); }
+
+    footer { text-align: center; color: var(--muted); margin-top: 34px; font-size: 0.95rem; }
+
+    /* Inline icon style */
+    svg { display: inline-block; vertical-align: middle; }
+
+    /* Subtle entrance */
+    [data-fx="fade"] { opacity: 0; transform: translateY(8px); animation: fadeIn 800ms ease forwards; }
+    [data-delay="100"]{ animation-delay: 100ms } [data-delay="200"]{ animation-delay: 200ms } [data-delay="300"]{ animation-delay: 300ms } [data-delay="350"]{ animation-delay: 350ms }
+    @keyframes fadeIn { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      [data-fx="fade"] { opacity: 1; transform: none; animation: none; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nervous Labs",
+    "url": "https://nervouslabs.com/",
+    "logo": "https://nervouslabs.com/og-image.png",
+    "sameAs": [
+      "https://github.com/nervous-rob"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header aria-label="Site header">
+    <a class="logo" href="#" aria-label="Nervous Labs">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">Nervous Labs</span>
+    </a>
+    <nav class="links" aria-label="Social links">
+      <a href="mailto:rob@nervouslabs.com" aria-label="Email">Email</a>
+      <a href="https://github.com/nervous-rob" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <main>
+      <div class="pill" data-fx="fade" data-delay="100" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18m9-9H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Building something thoughtful
+      </div>
+
+      <h1 data-fx="fade" data-delay="200">AI, knowledge systems, and tools for better thinking.</h1>
+      <p class="tag" data-fx="fade" data-delay="300">Nervous Labs is an independent studio exploring the frontier between physics‑inspired ML, humane software, and practical tools. We’re crafting the first releases now.</p>
+
+      <section class="card grid" data-fx="fade" data-delay="350" aria-label="Stay in the loop">
+        <div>
+          <h2 style="margin:0 0 8px;font-size:1.2rem">Stay in the loop</h2>
+          <p style="margin:0 0 12px;color:var(--muted)">No spam. A few thoughtful updates, early prototypes, and calls for collaborators.</p>
+
+          <!--
+            OPTION A (no backend): mailto fallback below
+            Replace with your ESP/newsletter form later (Buttondown, ConvertKit, etc.).
+          -->
+          <div class="actions">
+            <a class="btn" href="mailto:rob@nervouslabs.com?subject=Subscribe%20me%20to%20Nervous%20Labs&body=Hi%20Rob%2C%20please%20add%20me%20to%20the%20updates%20list." aria-label="Subscribe via email">Subscribe</a>
+            <a class="btn ghost" href="mailto:rob@nervouslabs.com?subject=Hello%20Nervous%20Labs" aria-label="Contact">Say hi</a>
+          </div>
+        </div>
+        <div aria-hidden="true">
+          <div style="background:var(--card); border:1px solid rgba(255,255,255,0.06); border-radius:14px; padding:16px">
+            <div style="display:flex; align-items:center; gap:8px; color:var(--muted); font-size:0.9rem; margin-bottom:10px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 6-9 6-9-6 9-6zm0 12l9 6-9 6-9-6 9-6z" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>Focus</span>
+            </div>
+            <ul style="margin:0; padding-left:18px; color:var(--muted); line-height:1.7">
+              <li>Spitball — AI‑assisted knowledge engine</li>
+              <li>Goobster — playful agentic bot</li>
+              <li>Cortex — brain‑inspired ML framework</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Nervous Labs · <a href="mailto:rob@nervouslabs.com" style="color:inherit">rob@nervouslabs.com</a>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
